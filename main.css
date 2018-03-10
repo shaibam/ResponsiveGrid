@@ -2,8 +2,17 @@
     box-sizing: border-box;
 }
 
-.cell {
-
+.cell:nth-child(4n+0) {
+    background: rgb(140, 216, 212);
+}
+.cell:nth-child(4n+1) {
+    background: rgb(202, 214, 133);
+}
+.cell:nth-child(4n+2) {
+    background: rgb(236, 226, 135);
+}
+.cell:nth-child(4n+3) {
+    background: rgb(224, 169, 208);
 }
 
 .small {
