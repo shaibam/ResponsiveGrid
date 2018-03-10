@@ -9,6 +9,7 @@ Notes:
 * It's a shame that the syntax dosent have true private declerations)
 * Though performance is pretty good, it could have had better performance if a virtual dom was used.
 * If nodeJS is installed, this can be easily tested using :
- npm install http-server -g
+ ```npm install http-server -g
  http-server
+ ```
 
