@@ -23,5 +23,6 @@ class Cell {
     shrink() {
         this._element.classList.remove('big')
         this._element.classList.add('small');
+        this._element.style.setProperty('grid-area','auto')    
     }
 }

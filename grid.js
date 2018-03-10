@@ -3,6 +3,7 @@ class Grid {
         this._element = document.createElement('div');
         this._element.classList.add('grid');
         this._cells = [];
+        this._bigCells = [];
         this._cellWidth = 300;
         this._cellHeight = 169;
         this._container = container;
@@ -29,7 +30,7 @@ class Grid {
     _create() {
         this._container.appendChild(this._element);
         var count = this._count;
-        console.log(count);
+        //console.log(count);
         for (var i = 0; i < count - 1; i++) {
             var c = new Cell(i);
             this._element.appendChild(c.element)
@@ -47,14 +48,25 @@ class Grid {
             this._cells[r + (i * columnsCount)-pushCount].grow(i, r); // i is the row, r is the column
             pushCount++;
         }*/
-        var itemsCount=0;
+        for (var i in this._bigCells) {
+            this._bigCells[i].shrink();
+        }
+        var itemsCount = 0;
         var r;
-        for (var i =0;i<rowsCount;i+=2) {
+        //for (var i = 0; i < rowsCount; i += 2) {
+        i=0;
+        while (itemsCount<this._cells.length) {
             r = Math.floor(Math.random() * (columnsCount - 1));
             //this._cells[r + (i * columnsCount)].grow(i, r); // i is the row, r is the column
-            this._cells[itemsCount+r].grow(i, r); // i is the row, r is the column
-            itemsCount+=1+(columnsCount-2)*2;
+            try {
+                this._cells[itemsCount + r].grow(i, r); // i is the row, r is the column
+            } catch (e) {
+                debugger;
+            }
+            this._bigCells.push(this._cells[itemsCount + r]);
+            itemsCount += 1 + (columnsCount - 2) * 2;
             rowsCount++;
+            i+=2;
         }
     }
 
@@ -62,7 +74,7 @@ class Grid {
         return this._element;
     }
 
-    onResize() {
+    onResize(){
         this._scaleRandomCellsInRow()
     }
 }
