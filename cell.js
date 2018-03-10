@@ -1,5 +1,6 @@
 class Cell {
     constructor(id) {
+        //local properties
         this._element = document.createElement('div');
         this._element.classList.add('cell','small');
         this._element.innerHTML = id;
